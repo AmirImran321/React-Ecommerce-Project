@@ -3,6 +3,7 @@ import './App.css';
 import Login from './Login';
 import Register from './Register';
 import Homepage from './Homepage';
+import Cart from './Cart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Router,Route,Routes} from "react-router-dom";
 
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Homepage/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path ="/cart" element ={<Cart/>} />
         </Routes>
       </div>
     </Router>

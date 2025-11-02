@@ -23,7 +23,7 @@ const Navbar = ()=>{
                     </Nav>
                 </Col>
                 <Col md={10}>
-                    <h2>Main Content Area</h2>
+                    <h1>Welcome to the E-commerce App</h1>
                 </Col>
             </Row>
         </Container>

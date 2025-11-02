@@ -45,16 +45,6 @@ const Profile =()=>{
             </div>
             <div className="form-floating">
             <input
-                type="text"
-                placeholder="Username"
-                className="form-control"
-                value={formData.username}
-                onChange={handleChange}
-            />
-            <label>Username</label>
-            </div>
-            <div className="form-floating">
-            <input
                 type="email"
                 placeholder="Email"
                 className="form-control"

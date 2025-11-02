@@ -21,6 +21,8 @@ function Login() {
   };
 
   return (
+    <div className="d-flex justify-content-center vh-100 align-items-center">
+    <div className="card p-3" style={{width:"100%", maxWidth:"400px" }}>  
     <form onSubmit={handleSubmit}>
       <div className="form-floating">
       <input
@@ -42,8 +44,10 @@ function Login() {
       />
       <label>Password</label>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" className="btn btn-primary">Login</button>
     </form>
+    </div>
+    </div>
   );
 }
 

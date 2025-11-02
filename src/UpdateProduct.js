@@ -24,7 +24,8 @@ const UpdateProduct = () =>{
     }
 
     return(
-        <div>
+        <div className="d-flex justify-content-center align-items-center">
+            <div className="card p-4" style={{width:"100%", maxWidth:"400px"}}>
             <h2>Update Product</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-floating">
@@ -78,6 +79,7 @@ const UpdateProduct = () =>{
                     <label>Image</label>
                 </div>
             </form>
+            </div>
         </div>
     )
 }

@@ -14,10 +14,10 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+        {/*  <Route path="/" element={<Homepage />} /> */}
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/cart" element={<Cart />} />
+        {/*  <Route path="/register" element={<Register />} />*/}
+        {/*  <Route path="/cart" element={<Cart />} />*/}
         </Routes>
       </div>
     </Router>

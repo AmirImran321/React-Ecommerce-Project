@@ -25,6 +25,8 @@ const Register = () => {
     };
 
     return (
+        <div className="d-flex justify-content-center vh-100 align-items-center">
+        <div className="card p-4">
         <form onSubmit={handleSubmit}>
             <div className="form-floating">
             <input
@@ -66,8 +68,10 @@ const Register = () => {
             />
             <label>Re-enter Password</label>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" className="btn btn-primary">Register</button>
         </form>
+        </div>
+        </div>
     );
 };
 

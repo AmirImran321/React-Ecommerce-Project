@@ -1,7 +1,9 @@
 import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const UpdateProduct = () =>{
 
+    const navigate = useNavigate();
     const [formData,setFormData] = useState({
         title: '',
         price: '',

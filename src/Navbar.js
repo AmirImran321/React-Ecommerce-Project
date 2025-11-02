@@ -1,11 +1,17 @@
 import {useState} from 'react';
-import {Container, Nav, Col, Row} from 'react-bootstrap';
+import {Container, Nav, Col, Row, Button} from 'react-bootstrap';
 
 const Navbar = ()=>{
     const [expanded, setExpanded] = useState(false);
     
+    const toggle = () => setExpanded(!expanded);
+    const untoggle = () => setExpanded(false);
+
     return(
         <Container fluid>
+            <Button className="mb-3" onClick={toggle}>
+                {expanded ? 'Collapse' : 'Expand'}
+            </Button>
             <Row>
                 <Col md={2} className="bg-light-vh-100">
                     <Nav className ="flex-column p-3">

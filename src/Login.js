@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
   const [error,setError] = useState("");
@@ -23,6 +23,7 @@ function Login() {
   return (
     <div className="d-flex justify-content-center vh-100 align-items-center">
     <div className="card p-3" style={{width:"100%", maxWidth:"400px" }}>  
+    <h2 className="text-center">Login</h2>
     <form onSubmit={handleSubmit}>
       <div className="form-floating">
       <input
@@ -44,8 +45,9 @@ function Login() {
       />
       <label>Password</label>
       </div>
-      <button type="submit" className="btn btn-primary">Login</button>
+      <button type="submit" className="btn btn-primary w-100">Login</button>
     </form>
+    <div className="card-footer text-muted text-center mt2">Did not sign up yet?<Link to="/register">Register</Link></div>
     </div>
     </div>
   );

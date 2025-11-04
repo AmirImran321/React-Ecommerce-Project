@@ -22,7 +22,8 @@ const AddProduct = () =>{
     }
 
     return(
-        <div>
+         <div className="d-flex justify-content-center vh-100 align-items-center">
+            <div className="card p-3" style={{width:"100%", maxWidth:"400px" }}>
             <h2>Add New Product</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-floating">
@@ -77,6 +78,7 @@ const AddProduct = () =>{
                 </div>
             </form>
         </div>
+    </div>
     )
 }
 

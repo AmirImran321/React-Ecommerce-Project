@@ -4,21 +4,26 @@ import Login from './Login';
 import Register from './Register';
 import Homepage from './Homepage';
 import Cart from './Cart';
-import Navbar from './Navbar';  
+import Sidebar from './Sidebar';
+import AddProduct from './AddProduct'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Sidebar />
+        <div className="container mt-3">
         <Routes>
-        {/*  <Route path="/" element={<Homepage />} /> */}
+          <Route path="/" element={<Homepage />} /> 
           <Route path="/login" element={<Login />} />
-        {/*  <Route path="/register" element={<Register />} />*/}
-        {/*  <Route path="/cart" element={<Cart />} />*/}
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path ="/product" element={<AddProduct />}/>
         </Routes>
+      </div>
       </div>
     </Router>
   );

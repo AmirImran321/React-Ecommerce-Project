@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 const Register = () => {
     const [error,setError] = useState("");
@@ -26,7 +26,8 @@ const Register = () => {
 
     return (
         <div className="d-flex justify-content-center vh-100 align-items-center">
-        <div className="card p-4">
+        <div className="card p-3" style={{width:"100%", maxWidth:"400px"}}>
+        <h2 className="text-center">Register</h2>
         <form onSubmit={handleSubmit}>
             <div className="form-floating">
             <input
@@ -68,8 +69,9 @@ const Register = () => {
             />
             <label>Re-enter Password</label>
             </div>
-            <button type="submit" className="btn btn-primary">Register</button>
+            <button type="submit" className="btn btn-primary w-100">Register</button>
         </form>
+        <div className="card-footer text-muted text-center mt3">Already have an account?<Link to="/login">Login</Link></div>
         </div>
         </div>
     );

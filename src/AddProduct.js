@@ -26,7 +26,7 @@ const AddProduct = () =>{
             <div className="card p-3" style={{width:"100%", maxWidth:"400px" }}>
             <h2>Add New Product</h2>
             <form onSubmit={handleSubmit}>
-                <div className="form-floating">
+                <div className="form-floating mb-3">
                     <input 
                         type="text" 
                         placeholder="Title"
@@ -36,7 +36,7 @@ const AddProduct = () =>{
                     />
                     <label>Title</label>
                 </div>
-                <div className="form-floating">
+                <div className="form-floating mb-3">
                     <input 
                         type="number" 
                         placeholder="Price"
@@ -46,7 +46,7 @@ const AddProduct = () =>{
                     />
                     <label>Price</label>
                 </div>
-                <div className="form-floating">
+                <div className="form-floating mb-3">
                     <input 
                         type="text" 
                         placeholder="Description"
@@ -56,7 +56,7 @@ const AddProduct = () =>{
                     />
                     <label>Description</label>
                 </div>
-                <div className="form-floating">
+                <div className="form-floating mb-3">
                     <input 
                         type="text" 
                         placeholder="Category"
@@ -66,7 +66,7 @@ const AddProduct = () =>{
                     />
                     <label>Category</label>
                 </div>
-                <div className="form-floating">
+                <div className="form-floating mb-3">
                     <input 
                         type="file" 
                         placeholder="Image"

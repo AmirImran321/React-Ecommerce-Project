@@ -21,11 +21,11 @@ const Sidebar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="flex-column">
-            <Nav.Link href="/"><i className="bi bi-house-fill"></i>Homepage</Nav.Link>
-            <Nav.Link href="/product"><i className="bi bi-collection-fill"></i>Product</Nav.Link>
-            <Nav.Link href="/cart"><i className="bi bi-basket3-fill"></i>Cart</Nav.Link>
-            <Nav.Link href="/profile"><i className="bi bi-person-fill"></i>Profile</Nav.Link>
-            <Nav.Link href="/logout"><i className="bi bi-box-arrow-right"></i>Logout</Nav.Link>
+            <Nav.Link href="/"><i className="bi bi-house-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Homepage</Nav.Link>
+            <Nav.Link href="/product"><i className="bi bi-collection-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Product</Nav.Link>
+            <Nav.Link href="/cart"><i className="bi bi-basket3-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Cart</Nav.Link>
+            <Nav.Link href="/profile"><i className="bi bi-person-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Profile</Nav.Link>
+            <Nav.Link href="/logout"><i className="bi bi-box-arrow-right" style={{padding:"5px" , fontSize:"20px"}}></i>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -25,7 +25,7 @@ function Login() {
     <div className="card p-3" style={{width:"100%", maxWidth:"400px" }}>  
     <h2 className="text-center">Login</h2>
     <form onSubmit={handleSubmit}>
-      <div className="form-floating">
+      <div className="form-floating mb-3">
       <input
         type="text"
         placeholder="Username"
@@ -35,7 +35,7 @@ function Login() {
       />
       <label>Username</label>
       </div>
-      <div className="form-floating">
+      <div className="form-floating mb-3">
       <input
         type="password"
         placeholder="Password"

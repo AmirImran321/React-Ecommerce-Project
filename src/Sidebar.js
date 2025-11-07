@@ -1,31 +1,56 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
+  const toggleSidebar = () => setCollapsed(!collapsed);
   return (
     <Navbar
-      expanded={expanded}
-      expand="md" 
-      bg="light"
-      variant="light"
-      className="flex-column vh-100 position-fixed"
-      style={{ width: '250px' }}
+      expand="sm"
+      bg="dark"
+      variant="dark"
+      className="flex-column vh-100 position-fixed align-items-center"
+      style={{ width: collapsed ? '80px' : '200px', transition: 'width 0.3s' }}
     >
       <Container fluid className="flex-column p-0">
-        <Navbar.Toggle
+        <Button
           aria-controls="basic-navbar-nav"
-          onClick={() => setExpanded(expanded ? false : "expanded")}
+          onClick={toggleSidebar}
           className="mb-3"
-        />
-        <Navbar.Collapse id="basic-navbar-nav">
+        >
+          {collapsed ? <i className="bi bi-chevron-right"></i> : <i className="bi bi-chevron-left"></i>}
+        </Button>
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className={collapsed ? 'collapse-collapsed' : ''}
+        >
           <Nav className="flex-column">
-            <Nav.Link href="/"><i className="bi bi-house-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Homepage</Nav.Link>
-            <Nav.Link href="/product"><i className="bi bi-collection-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Product</Nav.Link>
-            <Nav.Link href="/cart"><i className="bi bi-basket3-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Cart</Nav.Link>
-            <Nav.Link href="/profile"><i className="bi bi-person-fill" style={{padding:"5px" , fontSize:"20px"}}></i>Profile</Nav.Link>
-            <Nav.Link href="/logout"><i className="bi bi-box-arrow-right" style={{padding:"5px" , fontSize:"20px"}}></i>Logout</Nav.Link>
+            <Nav.Link as={NavLink} to="/" className="d-flex align-items-center">
+              <i className="bi bi-house-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
+              {!collapsed && <span>Homepage</span>}
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/product" className="d-flex align-items-center">
+              <i className="bi bi-collection-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
+              {!collapsed && <span>Product</span>}
+            </Nav.Link>
+             <Nav.Link as={NavLink} to="/add_product" className="d-flex align-items-center">
+             <i className="bi bi-bag-plus-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
+              {!collapsed && <span>Add Product</span>}
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/cart" className="d-flex align-items-center">
+              <i className="bi bi-basket3-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
+              {!collapsed && <span>Cart</span>}
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/profile" className="d-flex align-items-center">
+              <i className="bi bi-person-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
+              {!collapsed && <span>Profile</span>}
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/logout" className="d-flex align-items-center">
+              <i className="bi bi-box-arrow-right" style={{ padding: "5px", fontSize: "20px" }}></i>
+              {!collapsed && <span>Logout</span>}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -6,6 +6,7 @@ import Homepage from './Homepage';
 import Cart from './Cart';
 import Sidebar from './Sidebar';
 import AddProduct from './AddProduct'; 
+import Product from './Product';
 import Profile from './Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -22,10 +23,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path ="/product" element={<AddProduct />}/>
+          <Route path="/product" element={<Product />} />
+          <Route path="/add_product" element={<AddProduct />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
+      <footer className="bg-dark text-light text-center py-3">
+        <p>&copy; {new Date().getFullYear()} E-Commerce App</p>
+      </footer>
       </div>
     </Router>
   );

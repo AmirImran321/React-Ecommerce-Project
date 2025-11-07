@@ -23,9 +23,6 @@ const Homepage = () => {
             ) : (
                 <Register onRegister={handleRegister} />
             )}
-            <button onClick={() => setIsLogin(!isLogin)}>
-                Switch to {isLogin ? "Register" : "Login"}
-            </button>
         </div>
     );
 };

@@ -1,3 +1,4 @@
+import { Table, Button } from 'react-bootstrap';
 import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import api from './api';
@@ -8,6 +9,10 @@ const Cart = () => {
 
     const handleCheckout = () => {
         navigate("/checkout");
+    };
+
+    const handleRemoveFromCart = (itemId) => {
+        setCartItems(cartItems.filter(item => item.id !== itemId));
     };
 
     useEffect(() => {
@@ -21,18 +26,39 @@ const Cart = () => {
     }, []);
 
     return (
-        <div>
+        <div className='d-flex justify-content-center vh-100 align-items-center'>
+        <div className='container mt-3'>
             <h2>Your Cart</h2>
-            {cartItems.length === 0 ? (
-                <p>No items in cart</p>
-            ) : (
-                <ul>
-                    {cartItems.map(item => (
-                        <li key={item.id}>{item.name}</li>
-                    ))}
-                </ul>
-            )}
-            <button onClick={handleCheckout}>Checkout</button>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cartItems.length === 0 ? (
+                        <tr>
+                            <td colSpan="3">No items in cart</td>
+                        </tr>
+                    ) : (
+                        cartItems.map(item => (
+                            <tr key={item.id}>
+                                <td>{item.name}</td>
+                                <td>{item.quantity}</td>
+                                <td>{item.price}</td>
+                                <td>
+                                    <Button variant="danger" onClick={() => handleRemoveFromCart(item.id)}>Remove</Button>
+                                </td>
+                            </tr>
+                        ))
+                    )}
+                </tbody>
+            </Table>
+            <Button variant="primary" onClick={handleCheckout}>Checkout</Button>
+        </div>
         </div>
     );
 };

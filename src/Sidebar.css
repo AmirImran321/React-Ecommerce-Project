@@ -1,0 +1,14 @@
+.sidebar{
+    transition: width 0.3s;
+    width: 250px;
+    overflow: hidden;
+}
+
+.sidebar.collapse-collapsed{
+    width: 80px;
+}
+
+.sidebar:hover{
+    width: 250px;
+    background-color: aliceblue;
+}

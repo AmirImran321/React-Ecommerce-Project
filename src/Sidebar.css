@@ -8,7 +8,17 @@
     width: 80px;
 }
 
-.sidebar:hover{
-    width: 250px;
-    background-color: aliceblue;
+.sidebar-link:hover{
+   background-color: #206cb8;
+   border-radius: 5px;
+
+}
+
+.sidebar-link {
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-link span {
+    transition: opacity 0.3s;
 }

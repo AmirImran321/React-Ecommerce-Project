@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import Login from './Login';
 import Register from './Register';
@@ -13,11 +14,13 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
+  const [collapsed, setCollapsed] = useState(false);
   return (
     <Router>
       <div className="App">
-        <Sidebar />
-        <div className="container mt-3">
+        <div className="layout d-flex">
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+        <div className="container mt-3" style={{ marginLeft: collapsed ? '80px' : '200px', transition: 'margin-left 0.3s' }}>
         <Routes>
           <Route path="/" element={<Homepage />} /> 
           <Route path="/login" element={<Login />} />
@@ -31,6 +34,7 @@ function App() {
       <footer className="bg-dark text-light text-center py-3">
         <p>&copy; {new Date().getFullYear()} E-Commerce App</p>
       </footer>
+      </div>
       </div>
     </Router>
   );

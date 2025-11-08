@@ -75,7 +75,7 @@ const Profile =()=>{
             />
             <label>Re-enter Password</label>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" className="btn btn-primary w-100">Register</button>
         </form>
         </div>
         </div>

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "./api";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
 
     useEffect(() => {
         api.get("/products")
@@ -33,9 +31,9 @@ const Product = () => {
                         <option>Clothes</option>
                         <option>Electronics</option>
                         <option>Furniture</option>
-                <option>Shoes</option>
-                <option>Miscellaneous</option>
-            </select>
+                        <option>Shoes</option>
+                        <option>Miscellaneous</option>
+                     </select>
             </div>
             </div>
             <div className="row row-cols-1 row-cols-md-4 g-4">
@@ -55,9 +53,7 @@ const Product = () => {
                                 <p className="card-text">{product.description}</p>
                                 <p><strong>Price: RM {product.price.toFixed(2)}</strong></p>
                                 <button
-                                    className="btn btn-primary"
-                                    onClick={() => navigate(`/products/${product.id}`)}
-                                >
+                                    className="btn btn-primary" >
                                     View Details
                                 </button>
                             </div>
@@ -67,6 +63,7 @@ const Product = () => {
             )}
         </div>
         </div>
+        
     );
 };
 

@@ -9,6 +9,7 @@ import Sidebar from './Sidebar';
 import AddProduct from './AddProduct'; 
 import Product from './Product';
 import Profile from './Profile';
+import ItemModal from './ItemModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/add_product" element={<AddProduct />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/item_modal" element={<ItemModal />} />
         </Routes>
       </div>
       <footer className="bg-dark text-light text-center py-3">

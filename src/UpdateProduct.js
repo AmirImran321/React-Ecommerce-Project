@@ -1,9 +1,9 @@
 import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import api from './api';
+import { Toast } from 'react-bootstrap';
 
 const UpdateProduct = () =>{
 
-    const navigate = useNavigate();
     const [formData,setFormData] = useState({
         title: '',
         price: '',
@@ -12,15 +12,39 @@ const UpdateProduct = () =>{
         image: ''
     })
 
-    const handleChange = (e) =>{
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
+    const handleChange = (e) => {
+  const { name, value, files } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: name === "image" ? files[0] : value
+  }));
+};
 
-    const handleSubmit = (e) =>{
+
+    const handleSubmit = async(e) =>{
         e.preventDefault();
+
+        const productData = {
+            title: formData.title,
+            price: parseFloat(formData.price),
+            description: formData.description,
+            category: formData.category,
+            image: formData.image
+        }
+        
+        try{
+            await api.put('/products/{id}', productData);
+            Toast.success('Product updated successfully!');
+        } catch (error) {
+            Toast.error('Failed to update product.');
+        }
+            setFormData({
+            title: '',
+            price: '',
+            description: '',
+            category: '',
+            image: ''
+        });
     }
 
     return(
@@ -31,6 +55,7 @@ const UpdateProduct = () =>{
                 <div className="form-floating mb-3">
                     <input 
                         type="text" 
+                        name="title"
                         placeholder="Title"
                         className="form-control"
                         value={formData.title}
@@ -41,6 +66,7 @@ const UpdateProduct = () =>{
                 <div className="form-floating mb-3">
                     <input 
                         type="number" 
+                        name="price"
                         placeholder="Price"
                         className="form-control"
                         value={formData.price}
@@ -51,6 +77,7 @@ const UpdateProduct = () =>{
                 <div className="form-floating mb-3">
                     <input 
                         type="text" 
+                        name="description"
                         placeholder="Description"
                         className="form-control"
                         value={formData.description}
@@ -61,6 +88,7 @@ const UpdateProduct = () =>{
                 <div className="form-floating mb-3">
                     <input 
                         type="text" 
+                        name="category"
                         placeholder="Category"
                         className="form-control"
                         value={formData.category}
@@ -71,9 +99,9 @@ const UpdateProduct = () =>{
                 <div className="form-floating mb-3">
                     <input 
                         type="file" 
+                        name="image"
                         placeholder="Image"
                         className="form-control"
-                        value={formData.image}
                         onChange={handleChange}
                     />
                     <label>Image</label>

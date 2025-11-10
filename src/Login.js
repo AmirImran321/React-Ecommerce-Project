@@ -28,6 +28,7 @@ function Login() {
       <div className="form-floating mb-3">
       <input
         type="text"
+        name="username"
         placeholder="Username"
         className="form-control"
          value={formData.username}
@@ -38,6 +39,7 @@ function Login() {
       <div className="form-floating mb-3">
       <input
         type="password"
+        name="password"
         placeholder="Password"
         className="form-control"
         value={formData.password}

@@ -11,7 +11,6 @@
 .sidebar-link:hover{
    background-color: #206cb8;
    border-radius: 5px;
-
 }
 
 .sidebar-link {
@@ -22,3 +21,4 @@
 .sidebar-link span {
     transition: opacity 0.3s;
 }
+

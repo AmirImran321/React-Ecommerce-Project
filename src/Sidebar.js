@@ -1,10 +1,28 @@
 import React from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
-const Sidebar = ({collapsed, setCollapsed}) => {
+const Sidebar = ({ collapsed, setCollapsed }) => {
   const toggleSidebar = () => setCollapsed(!collapsed);
+
+  const renderNavLink = (to, iconClass, label) => {
+    const linkContent = (
+      <Nav.Link as={NavLink} to={to} className="d-flex align-items-center sidebar-link">
+        <i className={iconClass} style={{ padding: "5px", fontSize: "20px" }}></i>
+        {!collapsed && <span>{label}</span>}
+      </Nav.Link>
+    );
+
+    return collapsed ? (
+      <OverlayTrigger placement="right" overlay={<Tooltip id={`tooltip-${label}`}>{label}</Tooltip>}>
+        {linkContent}
+      </OverlayTrigger>
+    ) : (
+      linkContent
+    );
+  };
+
   return (
     <Navbar
       expand="md"
@@ -14,43 +32,20 @@ const Sidebar = ({collapsed, setCollapsed}) => {
       style={{ width: collapsed ? '80px' : '200px', transition: 'width 0.3s' }}
     >
       <Container fluid className="flex-column p-0">
-        <Button
-          aria-controls="basic-navbar-nav"
-          onClick={toggleSidebar}
-          className="mb-3"
-        >
+        <Button onClick={toggleSidebar} className="mb-3">
           {collapsed ? <i className="bi bi-chevron-right"></i> : <i className="bi bi-chevron-left"></i>}
         </Button>
-  
-          <Nav className="flex-column">
-            <Nav.Link as={NavLink} to="/" className="d-flex align-items-center sidebar-link">
-              <i className="bi bi-house-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
-              {!collapsed && <span>Homepage</span>}
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/product" className="d-flex align-items-center sidebar-link">
-              <i className="bi bi-collection-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
-              {!collapsed && <span>Product</span>}
-            </Nav.Link>
-             <Nav.Link as={NavLink} to="/add_product" className="d-flex align-items-center sidebar-link">
-             <i className="bi bi-bag-plus-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
-              {!collapsed && <span>Add Product</span>}
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/cart" className="d-flex align-items-center sidebar-link">
-              <i className="bi bi-basket3-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
-              {!collapsed && <span>Cart</span>}
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/profile" className="d-flex align-items-center sidebar-link">
-              <i className="bi bi-person-fill" style={{ padding: "5px", fontSize: "20px" }}></i>
-              {!collapsed && <span>Profile</span>}
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/logout" className="d-flex align-items-center sidebar-link">
-              <i className="bi bi-box-arrow-right" style={{ padding: "5px", fontSize: "20px" }}></i>
-              {!collapsed && <span>Logout</span>}
-            </Nav.Link>
-          </Nav>
+        <Nav className="flex-column">
+          {renderNavLink("/", "bi bi-house-fill", "Homepage")}
+          {renderNavLink("/product", "bi bi-collection-fill", "Product")}
+          {renderNavLink("/add_product", "bi bi-bag-plus-fill", "Add Product")}
+          {renderNavLink("/cart", "bi bi-basket3-fill", "Cart")}
+          {renderNavLink("/profile", "bi bi-person-fill", "Profile")}
+          {renderNavLink("/item_modal", "bi bi-box-arrow-right", "Logout")}
+        </Nav>
       </Container>
     </Navbar>
-    );
+  );
 };
 
 export default Sidebar;

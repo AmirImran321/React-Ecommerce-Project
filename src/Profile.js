@@ -38,6 +38,7 @@ const Profile =()=>{
         <div className="form-floating mb-3">
             <input
                 type="text"
+                name="username"
                 placeholder="Username"
                 className="form-control"
                 value={formData.username}
@@ -48,6 +49,7 @@ const Profile =()=>{
             <div className="form-floating mb-3">
             <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="form-control"
                 value={formData.email}
@@ -58,6 +60,7 @@ const Profile =()=>{
             <div className="form-floating mb-3">
             <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="form-control"
                 value={formData.password}
@@ -68,6 +71,7 @@ const Profile =()=>{
             <div className="form-floating mb-3">
             <input
                 type="password"
+                name="re_password"
                 placeholder="Re-enter Password"
                 className="form-control"
                 value={formData.re_password}

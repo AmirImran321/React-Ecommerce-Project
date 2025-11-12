@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "./api";
+import api from "./service/api";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -42,20 +42,26 @@ const Product = () => {
             ) : (
                 products.map(product => (
                     <div className="col" key={product.id}>
-                        <div className="card h-30">
+                        <div className="card h-100 w-100">
                             <img
                                 src={product.images[0]}
                                 className="card-img-top"
-                                alt={product.name}
+                                alt={product.title}
                             />
-                            <div className="card-body h-50">
+                            <div className="card-body d-flex flex-column justify-content-between">
                                 <h5 className="card-title">{product.title}</h5>
                                 <p className="card-text">{product.description}</p>
+                                <div className="card-footer bg-white border-1">
                                 <p><strong>Price: RM {product.price.toFixed(2)}</strong></p>
                                 <button
-                                    className="btn btn-primary" >
+                                    className=" mb-3 btn btn-primary w-100 " >
                                     View Details
                                 </button>
+                                <button
+                                    className="btn btn-success w-100" >
+                                    Add to Cart
+                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>

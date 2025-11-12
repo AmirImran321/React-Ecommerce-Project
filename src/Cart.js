@@ -1,7 +1,6 @@
 import { Table, Button } from 'react-bootstrap';
 import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import api from './api';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -16,13 +15,8 @@ const Cart = () => {
     };
 
     useEffect(() => {
-        api.get("/products")
-            .then(res => {
-                setCartItems(res.data);
-            })
-            .catch(error => {
-                console.error("Error fetching cart items:", error);
-            });
+       const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+       setCartItems(storedCart);
     }, []);
 
     return (

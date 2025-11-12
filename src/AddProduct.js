@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api from './api';
+import api from './service/api';
 import { Button, Toast, ToastContainer } from 'react-bootstrap';
 
 const AddProduct = () => {
@@ -25,7 +25,7 @@ const AddProduct = () => {
   const urls = e.target.value
     .split(',')
     .map(url => url.trim())
-    .filter(url => url.length > 0); // remove empties
+    .filter(url => url.length > 0); 
 
   setFormData({
     ...formData,
@@ -38,10 +38,10 @@ const AddProduct = () => {
 
     const productData = {
       title: formData.title,
-      price: parseFloat(formData.price), // ensure number
+      price: parseFloat(formData.price), 
       description: formData.description,
-      categoryId: Number(formData.categoryId), // ensure number
-      images: formData.images // must be array of strings
+      categoryId: Number(formData.categoryId),
+      images: formData.images
     };
 
     try {
@@ -58,7 +58,7 @@ const AddProduct = () => {
       title: '',
       price: '',
       description: '',
-      categoryId: '',
+      categoryId: 0,
       images: []
     });
   };
@@ -122,6 +122,7 @@ const AddProduct = () => {
               name="images"
               placeholder="Image URLs (comma separated)"
               className="form-control"
+              style={{width:"600", height:"400"}}
               value={formData.images.join(', ')}
               onChange={handleChangeImages}
               required
@@ -134,7 +135,13 @@ const AddProduct = () => {
         </form>
       </div>
       <ToastContainer position="top-end" className="p-3">
-        <Toast bg="success" show={showToast} onClose={() => setShowToast(false)}>
+        <Toast 
+          bg="success" 
+          show={showToast} 
+          onClose={() => setShowToast(false)}
+          delay={3000} 
+          autohide
+        >
           <Toast.Body>{toastMessage}</Toast.Body>
         </Toast>
       </ToastContainer>

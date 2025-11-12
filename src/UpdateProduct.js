@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import api from './api';
+import api from './service/api';
 import { Toast } from 'react-bootstrap';
 
 const UpdateProduct = () =>{
@@ -8,28 +8,38 @@ const UpdateProduct = () =>{
         title: '',
         price: '',
         description: '',
-        category: '',
-        image: ''
+        category: 0,
+        images: []
     })
 
-    const handleChange = (e) => {
-  const { name, value, files } = e.target;
-  setFormData(prev => ({
-    ...prev,
-    [name]: name === "image" ? files[0] : value
-  }));
+     const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleChangeImages = (e) => {
+  const urls = e.target.value
+    .split(',')
+    .map(url => url.trim())
+    .filter(url => url.length > 0); 
+
+  setFormData({
+    ...formData,
+    images: urls
+  });
 };
 
-
-    const handleSubmit = async(e) =>{
-        e.preventDefault();
+  const handleSubmit = async(e) =>{
+      e.preventDefault();
 
         const productData = {
             title: formData.title,
             price: parseFloat(formData.price),
             description: formData.description,
             category: formData.category,
-            image: formData.image
+            images: formData.images
         }
         
         try{
@@ -42,8 +52,8 @@ const UpdateProduct = () =>{
             title: '',
             price: '',
             description: '',
-            category: '',
-            image: ''
+            category: 0,
+            images: []
         });
     }
 
@@ -98,13 +108,13 @@ const UpdateProduct = () =>{
                 </div>
                 <div className="form-floating mb-3">
                     <input 
-                        type="file" 
-                        name="image"
-                        placeholder="Image"
+                        type="url" 
+                        name="images"
+                        placeholder="Images"
                         className="form-control"
-                        onChange={handleChange}
+                        onChange={handleChangeImages}
                     />
-                    <label>Image</label>
+                    <label>Images</label>
                 </div>
             </form>
             </div>

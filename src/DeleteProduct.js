@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import api from './service/api';
 import { Toast } from 'react-bootstrap';
+import { deleteProduct } from './service/productService';
 
 const DeleteProduct = () =>{
 
@@ -11,7 +11,7 @@ const DeleteProduct = () =>{
 
     const handleDelete = async () => {
         try {
-            await api.delete(`/products/${productId}`);
+            await deleteProduct(productId);
             setToastMessage('Product deleted successfully');
             setToastType('success');
             setShowToast(true);

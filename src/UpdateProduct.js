@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import api from './service/api';
 import { Toast } from 'react-bootstrap';
+import { updateProduct } from './service/productService';
 
 const UpdateProduct = () =>{
 
@@ -8,8 +8,8 @@ const UpdateProduct = () =>{
         title: '',
         price: '',
         description: '',
-        category: 0,
-        images: []
+        category: '',
+        image:'' 
     })
 
      const handleChange = (e) => {
@@ -19,18 +19,6 @@ const UpdateProduct = () =>{
     });
   };
 
-  const handleChangeImages = (e) => {
-  const urls = e.target.value
-    .split(',')
-    .map(url => url.trim())
-    .filter(url => url.length > 0); 
-
-  setFormData({
-    ...formData,
-    images: urls
-  });
-};
-
   const handleSubmit = async(e) =>{
       e.preventDefault();
 
@@ -39,11 +27,11 @@ const UpdateProduct = () =>{
             price: parseFloat(formData.price),
             description: formData.description,
             category: formData.category,
-            images: formData.images
+            images: formData.image
         }
         
         try{
-            await api.put('/products/{id}', productData);
+           await updateProduct(productData);
             Toast.success('Product updated successfully!');
         } catch (error) {
             Toast.error('Failed to update product.');
@@ -52,8 +40,8 @@ const UpdateProduct = () =>{
             title: '',
             price: '',
             description: '',
-            category: 0,
-            images: []
+            category: '',
+            image: ''
         });
     }
 
@@ -109,12 +97,13 @@ const UpdateProduct = () =>{
                 <div className="form-floating mb-3">
                     <input 
                         type="url" 
-                        name="images"
+                        name="image"
                         placeholder="Images"
                         className="form-control"
-                        onChange={handleChangeImages}
+                        value={formData.image}
+                        onChange={handleChange}
                     />
-                    <label>Images</label>
+                    <label>Image</label>
                 </div>
             </form>
             </div>

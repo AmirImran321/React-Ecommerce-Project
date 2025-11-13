@@ -9,7 +9,6 @@ import Sidebar from './Sidebar';
 import AddProduct from './AddProduct'; 
 import Product from './Product';
 import Profile from './Profile';
-import ProductCard from './ProductCard';
 import DeleteProduct from './DeleteProduct';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -31,7 +30,6 @@ function App() {
           <Route path="/product" element={<Product />} />
           <Route path="/add_product" element={<AddProduct />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/product_card" element={<ProductCard />} />
           <Route path="/delete_product" element={<DeleteProduct />} />
         </Routes>
       </div>

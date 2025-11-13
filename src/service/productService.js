@@ -1,4 +1,4 @@
-import api from "./service/api";
+import api from '../api';
 
 export const addProduct = async (productData) => {
   const {data} = await api.post('/products', productData);

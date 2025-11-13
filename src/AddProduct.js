@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api from './service/api';
+import { addProduct } from './service/productService';  
 import { Button, Toast, ToastContainer } from 'react-bootstrap';
 
 const AddProduct = () => {
@@ -7,8 +7,8 @@ const AddProduct = () => {
     title: '',
     price: '',
     description: '',
-    categoryId: 0,
-    images: []
+    category: '',
+    image: ''
   });
 
   const [showToast, setShowToast] = useState(false);
@@ -21,18 +21,6 @@ const AddProduct = () => {
     });
   };
 
-  const handleChangeImages = (e) => {
-  const urls = e.target.value
-    .split(',')
-    .map(url => url.trim())
-    .filter(url => url.length > 0); 
-
-  setFormData({
-    ...formData,
-    images: urls
-  });
-};
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,12 +28,12 @@ const AddProduct = () => {
       title: formData.title,
       price: parseFloat(formData.price), 
       description: formData.description,
-      categoryId: Number(formData.categoryId),
-      images: formData.images
+      category: Number(formData.category),
+      image: formData.image
     };
 
     try {
-      await api.post('/products', productData);
+      await addProduct(productData);
       setToastMessage('Product added successfully!');
       setShowToast(true);
     } catch (error) {
@@ -58,8 +46,8 @@ const AddProduct = () => {
       title: '',
       price: '',
       description: '',
-      categoryId: 0,
-      images: []
+      category: '',
+      image: ''
     });
   };
 
@@ -106,25 +94,25 @@ const AddProduct = () => {
           </div>
           <div className="form-floating mb-3">
             <input
-              type="number"
-              name="categoryId"
-              placeholder="Category ID"
+              type="text"
+              name="category"
+              placeholder="Category"
               className="form-control"
-              value={formData.categoryId}
+              value={formData.category}
               onChange={handleChange}
               required
             />
-            <label>Category ID</label>
+            <label>Category</label>
           </div>
           <div className="form-floating mb-3">
             <input
               type="text"
-              name="images"
-              placeholder="Image URLs (comma separated)"
+              name="image"
+              placeholder="Image URLs"
               className="form-control"
               style={{width:"600", height:"400"}}
-              value={formData.images.join(', ')}
-              onChange={handleChangeImages}
+              value={formData.image}
+              onChange={handleChange}
               required
             />
             <label>Images</label>
@@ -137,6 +125,7 @@ const AddProduct = () => {
       <ToastContainer position="top-end" className="p-3">
         <Toast 
           bg="success" 
+          text="white"
           show={showToast} 
           onClose={() => setShowToast(false)}
           delay={3000} 

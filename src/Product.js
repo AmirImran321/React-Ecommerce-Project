@@ -1,8 +1,21 @@
 import { useState, useEffect } from "react";
 import {getProducts} from "./service/productService.js";
+import { Toast, ToastContainer } from "react-bootstrap";
+import { useCart } from "./CartContext.js";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
+  const [toastMessage, setToastMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
+ const {addToCart} = useCart();
+  const categories = [...new Set(products.map(product => product.category))];
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setToastMessage('Product added to cart!');
+    setShowToast(true);
+    console.log("Adding to cart:", product);
+  }
 
    useEffect(() => {
    const fetchProducts = async () => {
@@ -32,10 +45,11 @@ const Product = () => {
                 <div className="col-md-4 mb-3">
                     <select className="form-select">
                         <option>Categories</option>
-                        <option>Men's Clothing</option>
-                        <option>Jewelry</option>
-                        <option>Electronics</option>
-                        <option>Women's Clothing</option>
+                        {categories.map(category => (
+                        <option key={category} value={category}>
+                            {category}
+                        </option>
+                        ))}
                      </select>
             </div>
             </div>
@@ -59,8 +73,9 @@ const Product = () => {
                                 <p>Rating: {product.rating.rate} <i className="bi bi-star-fill"></i> ({product.rating.count} reviews)</p>
                                 <p><strong>Price: RM {product.price.toFixed(2)}</strong></p>
                                 <button
-                                    className="btn btn-success w-100" >
-                                    Add to Cart
+                                    className="btn btn-success w-100"
+                                     onClick={() => handleAddToCart(product)} >
+                                    Add to Cart                       
                                 </button>
                                 </div>
                             </div>
@@ -68,6 +83,18 @@ const Product = () => {
                     </div>
                 ))
             )}
+        <ToastContainer style={{position:"absolute", bottom:0, right:0}} className="p-3">
+            <Toast
+                onClose={() => setShowToast(false)}
+                show={showToast}
+                delay={3000}
+                autohide
+                bg="success"
+                text="white"
+            >
+                <Toast.Body>{toastMessage}</Toast.Body>
+            </Toast>
+        </ToastContainer>
         </div>
         </div>
         

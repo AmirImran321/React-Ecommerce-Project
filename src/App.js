@@ -4,7 +4,7 @@ import './App.css';
 import Login from './Login';
 import Register from './Register';
 import Homepage from './Homepage';
-import Cart from './Cart';
+import {CartProvider} from './CartContext';
 import Sidebar from './Sidebar';
 import AddProduct from './AddProduct'; 
 import Product from './Product';
@@ -13,11 +13,13 @@ import DeleteProduct from './DeleteProduct';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CartPage from './CartPage';
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Router>
+      <CartProvider>
       <div className="App">
         <div className="layout d-flex">
         <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
@@ -26,10 +28,10 @@ function App() {
           <Route path="/" element={<Homepage />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="/product" element={<Product />} />
           <Route path="/add_product" element={<AddProduct />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/delete_product" element={<DeleteProduct />} />
         </Routes>
       </div>
@@ -38,6 +40,7 @@ function App() {
       </footer>
       </div>
       </div>
+      </CartProvider>
     </Router>
   );
 }

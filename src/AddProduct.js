@@ -28,7 +28,7 @@ const AddProduct = () => {
       title: formData.title,
       price: parseFloat(formData.price), 
       description: formData.description,
-      category: Number(formData.category),
+      category:formData.category,
       image: formData.image
     };
 

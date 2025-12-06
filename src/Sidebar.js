@@ -42,7 +42,8 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           {renderNavLink("/cart", "bi bi-basket3-fill", "Cart")}
           {renderNavLink("/profile", "bi bi-person-fill", "Profile")}
           {renderNavLink("/delete_product", "bi bi-trash-fill", "Delete Product")}
-          {renderNavLink("/product_card", "bi bi-box-arrow-right", "Logout")}
+          {renderNavLink("/login", "bi bi-box-arrow-right", "Logout")}
+          {renderNavLink("/backend", "bi bi-person-lines-fill", "Backend")}
         </Nav>
       </Container>
     </Navbar>

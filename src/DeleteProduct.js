@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { Toast } from 'react-bootstrap';
 import { deleteProduct } from './service/productService';
+import { Button } from 'react-bootstrap';
 
 const DeleteProduct = () =>{
 
@@ -25,14 +26,14 @@ const DeleteProduct = () =>{
 
     return (
         <div>
-            <h2>Delete Product</h2>
+            <h2 className="mb-3 text-center">Delete Product</h2>
             <input
                 type="text"
                 value={productId}
                 onChange={(e) => setProductId(e.target.value)}
                 placeholder="Enter Product ID"
             />
-            <button onClick={handleDelete}>Delete</button>
+            <Button variant="danger" className='d-block my-3 mx-auto' onClick={handleDelete}>Delete</Button>
 
             <Toast
                 show={showToast}

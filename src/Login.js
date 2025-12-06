@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState} from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
+
   const [error,setError] = useState("");
   const [formData, setFormData] = useState({
         username:"",
@@ -21,6 +22,7 @@ function Login() {
   };
 
   return (
+  
     <div className="d-flex justify-content-center vh-100 align-items-center">
     <div className="card p-3" style={{width:"100%", maxWidth:"400px" }}>  
     <h2 className="text-center">Login</h2>

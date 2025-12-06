@@ -8,4 +8,20 @@ const api = axios.create({
   },
 });
 
+api.interceptors.request.use((config) => {
+  // You can add authorization headers or other custom headers here
+  return config;
+});
+
+api.interceptors.response.use(
+  (response) => {
+    // You can handle responses globally here
+    return response;
+  },
+  (error) => {
+    // You can handle errors globally here
+    return Promise.reject(error);
+  }
+);
+
 export default api;

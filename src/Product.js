@@ -83,6 +83,7 @@ const Product = () => {
                     </div>
                 ))
             )}
+        </div>
         <ToastContainer style={{position:"absolute", bottom:0, right:0}} className="p-3">
             <Toast
                 onClose={() => setShowToast(false)}
@@ -95,7 +96,6 @@ const Product = () => {
                 <Toast.Body>{toastMessage}</Toast.Body>
             </Toast>
         </ToastContainer>
-        </div>
         </div>
         
     );

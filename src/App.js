@@ -8,6 +8,7 @@ import {CartProvider} from './CartContext';
 import Sidebar from './Sidebar';
 import AddProduct from './AddProduct'; 
 import Product from './Product';
+import Backend from './Backend';
 import Profile from './Profile';
 import DeleteProduct from './DeleteProduct';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/delete_product" element={<DeleteProduct />} />
+          <Route path="/backend" element={<Backend />} />
         </Routes>
       </div>
       <footer className="bg-dark text-light text-center py-3">

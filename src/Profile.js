@@ -6,7 +6,6 @@ const Profile =()=>{
     const [error,setError] = useState("");
     const [formData,setFormData] = useState({
         username:"",
-        email:"",
         password:"",
         re_password:""
     });
@@ -45,17 +44,6 @@ const Profile =()=>{
                 onChange={handleChange}
             />
             <label>Username</label>
-            </div>
-            <div className="form-floating mb-3">
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="form-control"
-                value={formData.email}
-                onChange={handleChange}
-            />
-            <label>E-mail</label>
             </div>
             <div className="form-floating mb-3">
             <input

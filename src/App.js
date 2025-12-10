@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
-import Login from './Login';
-import Register from './Register';
-import Homepage from './Homepage';
+import Login from './routes/Login';
+import Register from './routes/Register';
+import Homepage from './routes/Homepage';
 import {CartProvider} from './CartContext';
 import Sidebar from './Sidebar';
 import AddProduct from './AddProduct'; 

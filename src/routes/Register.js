@@ -5,13 +5,12 @@ const Register = () => {
     const [error,setError] = useState("");
     const [formData, setFormData] = useState({
         username:"",
-        email:"",
         password:"",
         re_password:""
     });
-    
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
+    
     const handleChange = (e) =>{
          setFormData({ ...formData, [e.target.name]: e.target.value });
     if (error) 
@@ -19,9 +18,20 @@ const Register = () => {
        
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
        e.preventDefault();
-        navigate("/dashboard");
+       const res = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        contentsType: "application/json",
+        body: JSON.stringify(formData)
+        } );    
+        const data = await res.json();
+        if(res.status === 201){
+            alert("Registration Successful! Please login.");
+            navigate("/login");
+        } else {
+            setError(data.message || "Registration failed");
+        }
     };
 
     return (
@@ -39,17 +49,6 @@ const Register = () => {
                 onChange={handleChange}
             />
             <label>Username</label>
-            </div>
-            <div className="form-floating mb-3">
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="form-control"
-                value={formData.email}
-                onChange={handleChange}
-            />
-            <label>E-mail</label>
             </div>
             <div className="form-floating mb-3">
             <input

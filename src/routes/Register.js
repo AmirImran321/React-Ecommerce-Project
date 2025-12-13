@@ -22,7 +22,7 @@ const Register = () => {
        e.preventDefault();
        const res = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
-        contentsType: "application/json",
+        'Content-Type': "application/json",
         body: JSON.stringify(formData)
         } );    
         const data = await res.json();

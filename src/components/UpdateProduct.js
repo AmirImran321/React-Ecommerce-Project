@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { Toast } from 'react-bootstrap';
-import { updateProduct } from './service/productService';
+import { updateProduct } from '../service/productService';
 
 const UpdateProduct = () =>{
 

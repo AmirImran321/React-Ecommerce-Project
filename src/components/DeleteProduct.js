@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { Toast } from 'react-bootstrap';
-import { deleteProduct } from './service/productService';
+import { deleteProduct } from '../service/productService';
 import { Button } from 'react-bootstrap';
 
 const DeleteProduct = () =>{

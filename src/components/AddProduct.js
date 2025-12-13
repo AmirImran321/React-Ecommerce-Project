@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addProduct } from './service/productService';  
+import { addProduct } from '../service/productService';  
 import { Button, Toast, ToastContainer } from 'react-bootstrap';
 
 const AddProduct = () => {

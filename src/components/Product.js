@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import {getProducts} from "./service/productService.js";
+import {getProducts} from "../service/productService.js";
 import { Toast, ToastContainer } from "react-bootstrap";
-import { useCart } from "./CartContext.js";
+import { useCart } from "../CartContext.js";
 
 const Product = () => {
   const [products, setProducts] = useState([]);

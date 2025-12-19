@@ -1,5 +1,7 @@
 import {useState} from "react";
 import {useNavigate, Link} from "react-router-dom";
+import api from "../api";
+import PasswordField from "../components/PasswordField";
 
 const Register = () => {
     const [error,setError] = useState("");
@@ -20,13 +22,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
        e.preventDefault();
-       const res = await fetch("http://localhost:5000/api/auth/register", {
-         method: "POST",
-         headers: {
-             "Content-Type": "application/json"
-              },
-         body: JSON.stringify(formData)
-        } );    
+       const res = await api.post("/auth/register",formData);
         const data = await res.json();
         if(res.status === 201){
             alert("Registration Successful! Please login.");
@@ -52,28 +48,19 @@ const Register = () => {
             />
             <label>Username</label>
             </div>
-            <div className="form-floating mb-3">
-            <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="form-control"
-                value={formData.password}
-                onChange={handleChange}
+            <PasswordField
+            label="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
             />
-            <label>Password</label>
-            </div>
-            <div className="form-floating mb-3">
-            <input
-                type="password"
-                name="re_password"
-                placeholder="Re-enter Password"
-                className="form-control"
-                value={formData.re_password}
-                onChange={handleChange}
+            <PasswordField
+            label="Confirm Password"
+            name="re_password"
+            value={formData.re_password}
+            onChange={handleChange}
             />
-            <label>Re-enter Password</label>
-            </div>
+            {error && <div className="alert alert-danger">{error}</div>}
             <button type="submit" className="btn btn-primary w-100">Register</button>
         </form>
         <div className="card-footer text-muted text-center mt3">Already have an account?<Link to="/login">Login</Link></div>

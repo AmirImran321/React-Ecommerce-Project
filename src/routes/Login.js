@@ -1,5 +1,7 @@
 import { useState} from "react";
 import { useNavigate, Link } from "react-router-dom";
+import PasswordField from "../components/PasswordField";
+import api from "../api";
 
 function Login() {
 
@@ -15,12 +17,20 @@ function Login() {
     if (error) 
         setError("");
        
+  
     }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/dashboard");
+    const res = await api.post("/auth/login",formData);
+    const data = await res.json();
+    if(res.status !== 200){
+      setError(data.message || "Login failed");
+      return;
+    }
+    localStorage.setItem("token",data.token);
+    navigate("/products");
   };
-
+  
   return (
   
     <div className="d-flex justify-content-center vh-100 align-items-center">
@@ -38,17 +48,12 @@ function Login() {
       />
       <label>Username</label>
       </div>
-      <div className="form-floating mb-3">
-      <input
-        type="password"
+      <PasswordField
         name="password"
-        placeholder="Password"
-        className="form-control"
+        label="Password"
         value={formData.password}
         onChange={handleChange}
-      />
-      <label>Password</label>
-      </div>
+      /> 
       <button type="submit" className="btn btn-primary w-100">Login</button>
     </form>
     <div className="card-footer text-muted text-center mt2">Did not sign up yet?<Link to="/register">Register</Link></div>

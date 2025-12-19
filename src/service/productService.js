@@ -14,8 +14,9 @@ export const deleteProduct = async (id) => {
    await api.delete(`/products/${id}`);
    return true;
 }
-export const getProducts = async () => {
+export const getAllProducts = async () => {
   const {data} = await api.get('/products');
+  console.log('Raw data:', data);
   return data;
 }
 

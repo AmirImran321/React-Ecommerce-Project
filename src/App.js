@@ -8,11 +8,11 @@ import {CartProvider} from './CartContext';
 import Sidebar from './components/Sidebar';
 import AddProduct from './components/AddProduct'; 
 import Product from './components/Product';
-import Backend from './Backend';
 import Profile from './components/Profile';
 import DeleteProduct from './components/DeleteProduct';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CartPage from './CartPage';
 
@@ -34,7 +34,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/delete_product" element={<DeleteProduct />} />
-          <Route path="/backend" element={<Backend />} />
         </Routes>
       </div>
       <footer className="bg-dark text-light text-center py-3">

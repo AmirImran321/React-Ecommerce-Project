@@ -31,21 +31,33 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       className="flex-column vh-100 position-fixed align-items-center"
       style={{ width: collapsed ? '80px' : '200px', transition: 'width 0.3s' }}
     >
-      <Container fluid className="flex-column p-0">
-        <Button onClick={toggleSidebar} className="mb-3">
-          {collapsed ? <i className="bi bi-chevron-right"></i> : <i className="bi bi-chevron-left"></i>}
-        </Button>
-        <Nav className="flex-column">
-          {renderNavLink("/", "bi bi-house-fill", "Homepage")}
-          {renderNavLink("/product", "bi bi-collection-fill", "Product")}
-          {renderNavLink("/add_product", "bi bi-bag-plus-fill", "Add Product")}
-          {renderNavLink("/cart", "bi bi-basket3-fill", "Cart")}
-          {renderNavLink("/profile", "bi bi-person-fill", "Profile")}
-          {renderNavLink("/delete_product", "bi bi-trash-fill", "Delete Product")}
-          {renderNavLink("/login", "bi bi-box-arrow-right", "Logout")}
-          {renderNavLink("/backend", "bi bi-person-lines-fill", "Backend")}
-        </Nav>
-      </Container>
+     <Container fluid className="flex-column p-0">
+  <Button onClick={toggleSidebar} className="mb-3">
+    {collapsed ? <i className="bi bi-chevron-right"></i> : <i className="bi bi-chevron-left"></i>}
+  </Button>
+  <Nav className="flex-column">
+    {renderNavLink("/", "bi bi-house-fill", "Homepage")}
+    <div className="dropdown">
+      <button 
+        className="btn btn-primary dropdown-toggle" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false"
+        style={{ width: collapsed ? "60px" : "160px" }}
+      >
+        <i className="bi bi-collection-fill"></i> {!collapsed && "Product"}
+      </button>
+      <ul className="dropdown-menu bg-dark">
+        <li>{renderNavLink("/add_product", "bi bi-bag-plus-fill", "Add Product")}</li>
+        <li>{renderNavLink("/delete_product", "bi bi-trash-fill", "Delete Product")}</li>
+      </ul>
+    </div>
+
+    {renderNavLink("/cart", "bi bi-basket3-fill", "Cart")}
+    {renderNavLink("/profile", "bi bi-person-fill", "Profile")}
+    {renderNavLink("/login", "bi bi-box-arrow-right", "Logout")}
+  </Nav>
+</Container>
+
     </Navbar>
   );
 };

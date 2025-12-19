@@ -25,6 +25,7 @@ const Product = () => {
         console.log("Fetched products:", products);
      } catch (error) {
        console.error("Error fetching products:", error);
+       setProducts([]);
      }
    };
 
@@ -58,29 +59,39 @@ const Product = () => {
                 <p>No products available</p>
             ) : (
                 products.map(product => (
-                    <div className="col" key={product.id}>
-                        <div className="card h-100 w-100 p-3">
-                            <img
-                                src={product.image}
-                                className="card-img-top"
-                                alt={product.title}
-                                style={{objectFit:"contain", height:"200px",backgroundColor:"#9e6c8bff"}}
-                            />
-                            <div className="card-body d-flex flex-column justify-content-between">
-                                <h5 className="card-title">{product.title}</h5>
-                                <p className="card-text">{product.description}</p>
-                                <div className="card-footer bg-white border-1">
-                                <p>Rating: {product.rating.rate} <i className="bi bi-star-fill"></i> ({product.rating.count} reviews)</p>
-                                <p><strong>Price: RM {product.price.toFixed(2)}</strong></p>
-                                <button
-                                    className="btn btn-success w-100"
-                                     onClick={() => handleAddToCart(product)} >
-                                    Add to Cart                       
-                                </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   <div className="col" key={product._id}>
+  <div className="card h-100 w-100 p-3">
+    <img
+      src={product.image || "https://via.placeholder.com/200"}
+      className="card-img-top"
+      alt={product.title}
+      style={{ objectFit: "contain", height: "200px", backgroundColor: "#9e6c8bff" }}
+    />
+
+    <div className="card-body d-flex flex-column justify-content-between">
+      <h5 className="card-title">{product.title}</h5>
+      <p className="card-text">{product.description}</p>
+
+      <div className="card-footer bg-white border-1">
+        {product.rating ? (
+          <p>Rating: {product.rating.rate} ⭐ ({product.rating.count} reviews)</p>
+        ) : (
+          <p>Rating: N/A</p>
+        )}
+
+        <p><strong>Price: RM {product.price.toFixed(2)}</strong></p>
+
+        <button
+          className="btn btn-success w-100"
+          onClick={() => handleAddToCart(product)}
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
                 ))
             )}
         </div>

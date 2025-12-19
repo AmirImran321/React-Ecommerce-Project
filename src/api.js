@@ -1,25 +1,25 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: `http://localhost:5000/api`,
+  baseURL: "http://localhost:5000/api",
   timeout: 10000,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: { "Content-Type": "application/json" },
 });
 
 api.interceptors.request.use((config) => {
-  // You can add authorization headers or other custom headers here
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
+
 api.interceptors.response.use(
-  (response) => {
-    // You can handle responses globally here
-    return response;
-  },
+  (response) => response.data, 
   (error) => {
-    // You can handle errors globally here
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
     return Promise.reject(error);
   }
 );

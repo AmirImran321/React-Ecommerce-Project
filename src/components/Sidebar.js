@@ -38,17 +38,17 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   <Nav className="flex-column">
     {renderNavLink("/", "bi bi-house-fill", "Homepage")}
     <div className="dropdown">
-      <button 
-        className="btn btn-primary dropdown-toggle" 
-        data-bs-toggle="dropdown" 
-        aria-expanded="false"
-        style={{ width: collapsed ? "60px" : "160px" }}
-      >
-        <i className="bi bi-collection-fill"></i> {!collapsed && "Product"}
-      </button>
+      <Button className="btn sidebar-link" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: collapsed ? "60px" : "160px" }} > 
+        <div className='d-flex align-items-center'> 
+          <i className="bi bi-collection-fill" style={{padding:'5px', fontSize:"20px"}}></i>
+           {!collapsed && "Product"} {!collapsed && <i className="bi bi-caret-down-fill ms-auto"></i>} 
+           </div> 
+           </Button>
       <ul className="dropdown-menu bg-dark">
         <li>{renderNavLink("/add_product", "bi bi-bag-plus-fill", "Add Product")}</li>
+        <li>{renderNavLink("/product", "bi bi-card-list", "View Products")}</li>
         <li>{renderNavLink("/delete_product", "bi bi-trash-fill", "Delete Product")}</li>
+        <li>{renderNavLink("/update_product", "bi bi-pencil-square", "Update Product")}</li>
       </ul>
     </div>
 

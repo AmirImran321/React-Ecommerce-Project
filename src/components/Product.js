@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {getProducts} from "../service/productService.js";
+import {getAllProducts} from "../service/productService.js";
 import { Toast, ToastContainer } from "react-bootstrap";
 import { useCart } from "../CartContext.js";
 
@@ -20,7 +20,7 @@ const Product = () => {
    useEffect(() => {
    const fetchProducts = async () => {
      try {
-       const products = await getProducts();
+       const products = await getAllProducts();
         setProducts(products);
         console.log("Fetched products:", products);
      } catch (error) {
@@ -59,7 +59,7 @@ const Product = () => {
                 <p>No products available</p>
             ) : (
                 products.map(product => (
-                   <div className="col" key={product._id}>
+                   <div className="col" key={product._id || product.id}>
   <div className="card h-100 w-100 p-3">
     <img
       src={product.image || "https://via.placeholder.com/200"}

@@ -1,13 +1,13 @@
 import api from '../api';
 
 export const addProduct = async (productData) => {
-  const data = await api.post('/api/products', productData);
-  return data;
+  const response = await api.post('/api/products', productData);
+  return response;
 }
 
 export const updateProduct = async (id, productData) => {
-  const data = await api.put(`/api/products/${id}`, productData);
-  return data;
+  const response = await api.put(`/api/products/${id}`, productData);
+  return response;
 }
 
 export const deleteProduct = async (id) => {
@@ -15,12 +15,12 @@ export const deleteProduct = async (id) => {
    return true;
 }
 export const getAllProducts = async () => {
-  const data = await api.get('/api/products');
-  console.log('Raw data:', data);
-  return data;
+  const response = await api.get('/api/products');
+  return response;
 }
 
+
 export const getProductById = async (id) => {
-  const data = await api.get(`/api/products/${id}`);
-  return data;
+  const response = await api.get(`/api/products/${id}`);
+  return response;
 }

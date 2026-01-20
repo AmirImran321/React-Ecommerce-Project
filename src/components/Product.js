@@ -12,7 +12,7 @@ const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const { addToCart } = useCart();
 
-  const categories = [...new Set(products.map(product => product.category))];
+ const categories = Array.isArray(products) ? [...new Set(products.map(p => p.category).filter(Boolean))] : [];
 
   const handleAddToCart = product => {
     addToCart(product);
@@ -21,20 +21,26 @@ const Product = () => {
     console.log("Adding to cart:", product);
   };
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const products = await getAllProducts();
-        setProducts(products);
-        console.log("Fetched products:", products);
-      } catch (error) {
-        console.error("Error fetching products:", error);
+ useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const fetchedProducts = await getAllProducts();
+      if (Array.isArray(fetchedProducts)) {
+        setProducts(fetchedProducts);
+        console.log("Fetched products:", fetchedProducts);
+      } else {
+        console.error("Fetched products is not an array:", fetchedProducts);
         setProducts([]);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setProducts([]);
+    }
+  };
 
-    fetchProducts();
-  }, []);
+  fetchProducts();
+}, []);
+
 
   const filteredProducts = filterBySearchAndCategory(
     products,
@@ -86,7 +92,7 @@ const Product = () => {
                   style={{
                     objectFit: "contain",
                     height: "200px",
-                    backgroundColor: "#9e6c8bff"
+                    backgroundColor:"gray"
                   }}
                 />
 

@@ -106,9 +106,9 @@ const AddProduct = () => {
           </div>
           <div className="form-floating mb-3">
             <input
-              type="text"
+              type="url"
               name="image"
-              placeholder="Image URLs"
+              placeholder="Image URL"
               className="form-control"
               style={{width:"600", height:"400"}}
               value={formData.image}

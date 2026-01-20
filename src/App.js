@@ -7,6 +7,7 @@ import Homepage from './routes/Homepage';
 import {CartProvider} from './CartContext';
 import Sidebar from './components/Sidebar';
 import AddProduct from './components/AddProduct'; 
+import UpdateProduct from './components/UpdateProduct';
 import Product from './components/Product';
 import Profile from './components/Profile';
 import DeleteProduct from './components/DeleteProduct';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/delete_product" element={<DeleteProduct />} />
+          <Route path="/update_product" element={<UpdateProduct />} />
         </Routes>
       </div>
       <footer className="bg-dark text-light text-center py-3">

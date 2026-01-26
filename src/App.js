@@ -35,7 +35,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/delete_product" element={<DeleteProduct />} />
-          <Route path="/update_product" element={<UpdateProduct />} />
+          <Route path="/update_product/:id" element={<UpdateProduct />} />
         </Routes>
       </div>
       <footer className="bg-dark text-light text-center py-3">

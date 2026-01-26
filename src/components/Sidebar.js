@@ -47,8 +47,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       <ul className="dropdown-menu bg-dark">
         <li>{renderNavLink("/add_product", "bi bi-bag-plus-fill", "Add Product")}</li>
         <li>{renderNavLink("/product", "bi bi-card-list", "View Products")}</li>
-        <li>{renderNavLink("/delete_product", "bi bi-trash-fill", "Delete Product")}</li>
-        <li>{renderNavLink("/update_product", "bi bi-pencil-square", "Update Product")}</li>
+        <li>{renderNavLink("/delete_product", "bi bi-pencil-fill", "Update Product")}</li>
       </ul>
     </div>
 
